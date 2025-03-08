@@ -12,23 +12,23 @@ interface Book {
 }
 
 const BookDetail = () => {
-  const { id } = useParams(); //Get book ID from URL
-  const [book, setBook] = useState<Book | null>(null); // Book object
+  const { id } = useParams(); // Get book ID from URL
+  const [book, setBook] = useState<Book | null>(null); // Book object, need to handle when null cause accessing properties
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/books/api/${id}/`) //Fetch book object with id from url
+    fetch(`http://localhost:8000/books/api/${id}/`) // Fetch book object with id from url
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Failed to fetch book details"); //Throw error if fail to fetch
+          throw new Error("Failed to fetch book details"); // Throw error if fail to fetch
         }
         return res.json(); // JSON to object
       })
-      .then((data) => setBook(data)) //Set book object
+      .then((data) => setBook(data)) // Set book object
       .catch((err) => setError(err.message)); // Set error message
   }, []);
 
-  if (!book) { // If book is null only display background image
+  if (!book) { // Conditional render, if book is null only display background image
     return (
       <main className="relative min-h-screen p-10 flex flex-col items-center">
         {/* Background Image*/}

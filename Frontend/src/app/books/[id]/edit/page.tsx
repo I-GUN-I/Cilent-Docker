@@ -8,7 +8,7 @@ import Image from "next/image";
 const EditBook = () => {
   const router = useRouter();
   const { id } = useParams(); // Get book ID from URL
-  //Book detail data variable  
+  // Book detail data variable  
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [content, setContent] = useState("");
@@ -17,10 +17,10 @@ const EditBook = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`http://localhost:8000/books/api/${id}/`) //Get book detail data
+    fetch(`http://localhost:8000/books/api/${id}/`) // Get book detail data
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Failed to fetch book details"); //Throw error if fail to fetch
+          throw new Error("Failed to fetch book details"); // Throw error if fail to fetch
         }
         return res.json();
       })
@@ -49,7 +49,7 @@ const EditBook = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          throw new Error("Failed to update book, is your password correct?"); //Throw error if fail to update, password 
+          throw new Error("Failed to update book, is your password correct?"); // Throw error if fail to update, password 
         }
         return res.json();
       })
