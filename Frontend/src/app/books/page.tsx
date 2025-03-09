@@ -4,7 +4,7 @@ import Image from "next/image";
 import BookCard from "@/components/BookCard";
 import Link from "next/link";
 
-// For book object type
+// For Book object type
 interface Book {
   id: number;
   title: string;
@@ -13,11 +13,11 @@ interface Book {
 }
 
 const Library = () => {
-  // Book hold array of book object with empty array as default
+  // books hold array of Book object with empty array as default
   const [books, setBooks] = useState<Book[]>([]);
-  // Error hold error string with Null as default
+  // error hold error string with Null as default
   const [error, setError] = useState<string | null>(null);
-  // Search hold string input from user with empty as default
+  // search hold string input from user with empty as default
   const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
