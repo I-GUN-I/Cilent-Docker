@@ -37,11 +37,7 @@ const Library = () => {
       book.title.toLowerCase().includes(search.toLowerCase()) ||
       book.author.toLowerCase().includes(search.toLowerCase())
     );
-  }, [books, search]); // useMemo will recalculates when books or search change, no re-rendering
-  
-  const bookNumber = useMemo(() => {
-    return filteredBooks.length;
-  }, [filteredBooks])
+  }, [books, search]); // useMemo will recalculates when books or search change
 
   return (
     <main className="relative min-h-screen p-10 flex flex-col items-center">
@@ -72,7 +68,7 @@ const Library = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <p className="ml-3 text-black">{bookNumber}</p>
+        <p className="ml-3 text-black">{filteredBooks.length}</p>
       </div>
 
       {/* Display book cards which also are Link, first one will be a create card that will send user to create page 
